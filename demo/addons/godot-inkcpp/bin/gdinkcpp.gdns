@@ -4,5 +4,5 @@
 
 [resource]
 resource_name = "gdinkcpp"
-class_name = "InkCpp"
+class_name = "InkStory"
 library = ExtResource( 1 )
