@@ -19,6 +19,10 @@ config/name="Ink Cpp Demo"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "." )
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
