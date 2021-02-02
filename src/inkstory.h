@@ -2,6 +2,7 @@
 #define INKSTORY_H
 
 #include <Godot.hpp>
+#include <PoolArrays.hpp>
 #include <Resource.hpp>
 
 #include <story.h>
@@ -14,7 +15,7 @@ class InkStory : public Resource {
     GODOT_CLASS(InkStory, Resource)
 
 public:
-    String path;
+    // String path;
     static void _register_methods();
 
     InkStory();
@@ -27,10 +28,12 @@ public:
     String get_line();
     bool has_choices();
     Array get_choices();
+    void print_data();
 
 private:
     ink::runtime::story *story;
     ink::runtime::runner runner;
+    PoolByteArray data;
 };
 
 }

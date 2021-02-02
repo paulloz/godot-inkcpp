@@ -8,9 +8,10 @@ var compiler : EditorImportPlugin = null
 
 func _enter_tree() -> void:
     compiler = ink_compiler_class.new()
-    add_import_plugin(compiler)
+
     add_custom_type("InkStory", "Resource", ink_story_class, null)
+    add_import_plugin(compiler)
     
 func _exit_tree() -> void:
-    remove_custom_type("InkStory")
     remove_import_plugin(compiler)
+    remove_custom_type("InkStory")

@@ -1,0 +1,13 @@
+[remap]
+
+importer="ink"
+type="Resource"
+path="res://.import/the_intercept.ink.json-301cf2d05862f3dddfbe974f085dc0ec.res"
+
+[deps]
+
+source_file="res://data/the_intercept.ink.json"
+dest_files=[ "res://.import/the_intercept.ink.json-301cf2d05862f3dddfbe974f085dc0ec.res" ]
+
+[params]
+

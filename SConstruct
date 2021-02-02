@@ -334,10 +334,10 @@ inkcpp_env = env.Clone()
 inkcpp_sources = [Glob('inkcpp/inkcpp/*.cpp')]
 inkcpp_library = inkcpp_env.Library(target=env['target_path'] + 'libinkcpp', source=inkcpp_sources)
 
-# inkcpp_compiler_env = env.Clone()
-# inkcpp_compiler_env.Append(CPPDEFINES=['INK_COMPILER', 'INK_EXPOSE_JSON'])
-# inkcpp_compiler_sources = [Glob('inkcpp/inkcpp_compiler/*.cpp')]
-# inkcpp_compiler_library = inkcpp_compiler_env.Library(target=env['target_path'] + 'libinkcpp_compiler', source=inkcpp_compiler_sources)
+inkcpp_compiler_env = env.Clone()
+inkcpp_compiler_env.Append(CPPDEFINES=['INK_COMPILER', 'INK_EXPOSE_JSON'])
+inkcpp_compiler_sources = [Glob('inkcpp/inkcpp_compiler/*.cpp')]
+inkcpp_compiler_library = inkcpp_compiler_env.Library(target=env['target_path'] + 'libinkcpp_compiler', source=inkcpp_compiler_sources)
 
 cpp_bindings_libname = 'libgodot-cpp.{}.{}.{}'.format(
                         env['platform'],
@@ -354,6 +354,7 @@ env.Append(LIBPATH=[env['target_path'], cpp_bindings_path + 'bin/'])
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=['src/'])
 sources = [
+    'src/inkcompiler.cpp',
     'src/inkstory.cpp',
     'src/library.cpp'
 ]
@@ -369,4 +370,4 @@ else:
     library = env.SharedLibrary(target=env['target_path'] + env['target_name'], source=sources)
 
 Requires(library, inkcpp_library)
-# Requires(library, inkcpp_compiler_library)
+Requires(library, inkcpp_compiler_library)

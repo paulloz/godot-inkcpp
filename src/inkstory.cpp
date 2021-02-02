@@ -4,7 +4,8 @@ using namespace godot;
 
 void InkStory::_register_methods()
 {
-	register_property<InkStory, String>("path", &InkStory::path, "data/the_intercept.ink.bin");
+	PoolByteArray pba;
+	register_property<InkStory, PoolByteArray>("data", &InkStory::data, pba);
 
 	register_method("load", &InkStory::load);
 	register_method("can_continue", &InkStory::can_continue);
@@ -27,7 +28,8 @@ void InkStory::_init()
 
 void InkStory::load()
 {
-	story = ink::runtime::story::from_file(path.alloc_c_string());
+	PoolByteArray::Read r = data.read();
+	story = ink::runtime::story::from_binary((unsigned char *)r.ptr(), data.size());
 	runner = story->new_runner();
 }
 

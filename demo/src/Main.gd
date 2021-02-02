@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var story = load("res://TheIntercept.tres")
+var story = preload("res://data/the_intercept.ink.json")
 
 func _ready():
     add_child(HSeparator.new())
